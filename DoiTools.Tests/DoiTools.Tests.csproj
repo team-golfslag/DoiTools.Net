@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\DoiTools.Net\DoiTools.Net.csproj" />
+        <ProjectReference Include="..\DoiTools.Net\DoiTools.Net.csproj"/>
     </ItemGroup>
 
 </Project>
