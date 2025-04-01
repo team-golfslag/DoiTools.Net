@@ -1,8 +1,12 @@
-namespace DoiTools.Tests;
+// This program has been developed by students from the bachelor Computer Science at Utrecht
+// University within the Software Project course.
+// 
+// © Copyright Utrecht University (Department of Information and Computing Sciences)
 
 using System.Text.Json;
-using Xunit;
 using DoiTools.Net;
+
+namespace DoiTools.Tests;
 
 public class DoiConverterTests
 {
@@ -10,8 +14,8 @@ public class DoiConverterTests
     {
         Converters =
         {
-            new DoiConverter()
-        }
+            new DoiConverter(),
+        },
     };
 
     [Theory]
@@ -20,7 +24,7 @@ public class DoiConverterTests
     public void Read_ShouldReturnDoi_WhenJsonIsValid(string json, string expectedDoi)
     {
         // Act
-        var result = JsonSerializer.Deserialize<Doi>(json, _options);
+        Doi? result = JsonSerializer.Deserialize<Doi>(json, _options);
 
         // Assert
         Assert.NotNull(result);
@@ -42,10 +46,10 @@ public class DoiConverterTests
     public void Write_ShouldReturnJsonString_WhenDoiIsValid(string doi, string expectedJson)
     {
         // Arrange
-        var doiInstance = Doi.Parse(doi);
+        Doi? doiInstance = Doi.Parse(doi);
 
         // Act
-        var result = JsonSerializer.Serialize(doiInstance, _options);
+        string? result = JsonSerializer.Serialize(doiInstance, _options);
 
         // Assert
         Assert.Equal(expectedJson, result);
